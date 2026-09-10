@@ -23,31 +23,35 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
 > Write them down here once you know them.
 
-**Project title:*Robot Maze Quest*
+**Project title:**
+Robot Maze Quest
 
-**My pair partner:*Sam Kempers*
+**My pair partner:**
+Sam Kempers
 
-**Tool we had to use:*https://bolt.new/*
+**Tool we had to use:**
+https://bolt.new/
 
-**SDG we had to address:*SDG 4 - Quality Education*
+**SDG we had to address:**
+SDG 4 - Quality Education
 
-**What problem does it solve, and for whom?*Robot Maze Quest helps children around 6-13 years old learn basic programming and computational thinking in a simple and fun way. The problem we focused on is that programming can be difficult or intimidating for children who have never coded before. Our game gives them a visual and interactive way to practise programming concepts without needing previous coding experience.*
+**What problem does it solve, and for whom?**
+Robot Maze Quest helps children around 6-13 years old learn basic programming and computational thinking in a simple and fun way. The problem we focused on is that programming can be difficult or intimidating for children who have never coded before. Our game gives them a visual and interactive way to practise programming concepts without needing previous coding experience.
 
-
-**What did you build?*We built a browser-based educational maze game where the user has to guide a robot to a star by using movement blocks such as move forward, turn left and turn right. The game has three difficulty levels: Easy, Advanced and Expert. These levels gradually introduce sequencing, repeat/loop blocks and if-statements. The mazes are randomly generated, so users can keep practising without always getting the same maze.*
-
+**What did you build?**
+We built a browser-based educational maze game where the user has to guide a robot to a star by using movement blocks such as move forward, turn left and turn right. The game has three difficulty levels: Easy, Advanced and Expert. These levels gradually introduce sequencing, repeat/loop blocks and if-statements. The mazes are randomly generated, so users can keep practising without always getting the same maze.
 
 **Link to the live thing (if any):**
-_Deployed URL, workflow export, video demo - whatever proves it works._
+https://skillfulrheyme4-ai4g-qx21.bolt.host/
 
 **How do I run it?**
-_Short instructions so someone else can start it._
+Open the deployed link in a modern web browser on a computer or tablet. No installation, account or sign-up is required. The user can immediately choose a difficulty level and start playing.
 
 **Who did what?**
 _Be honest about the split of work between you and your partner._
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
-_Every hackathon requires this. One honest paragraph beats three vague ones._
+_Our app is mainly aimed at children aged 6-13, but not every child can use it equally well. The game assumes that the learner can see the screen, understand basic English or Dutch, use a mouse or touchscreen, and has access to a computer or tablet with an internet connection. This can exclude children with visual impairments, reading difficulties, limited device access or limited understanding of the supported languages. There is also a risk that children focus too much on completing the maze with as few blocks as possible instead of actually understanding the programming concepts. This could cause frustration, especially for younger or less experienced learners. To reduce these risks, we made the interface simple and visual, removed the need for an account or installation, and created different difficulty levels so learners can start at a suitable level. In a future version, we would improve accessibility, add more language options and provide more educational feedback explaining why a solution works._
 
 ### Checklist
 - [x] Prototype code (or export / workflow file) is in `hackathon/`
