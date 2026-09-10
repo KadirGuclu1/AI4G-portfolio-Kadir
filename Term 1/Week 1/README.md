@@ -23,19 +23,19 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
 > Write them down here once you know them.
 
-**Project title:**
+**Project title:*Robot Maze Quest*
 
 **My pair partner:*Sam Kempers*
 
 **Tool we had to use:*https://bolt.new/*
 
-**SDG we had to address:*4*
+**SDG we had to address:*SDG 4 - Quality Education*
 
-**What problem does it solve, and for whom?**
-_Name a real, specific user. "Everyone" is not a user._
+**What problem does it solve, and for whom?*Robot Maze Quest helps children around 6-13 years old learn basic programming and computational thinking in a simple and fun way. The problem we focused on is that programming can be difficult or intimidating for children who have never coded before. Our game gives them a visual and interactive way to practise programming concepts without needing previous coding experience.*
 
-**What did you build?**
-_Two or three sentences. What can a user actually do with it?_
+
+**What did you build?*We built a browser-based educational maze game where the user has to guide a robot to a star by using movement blocks such as move forward, turn left and turn right. The game has three difficulty levels: Easy, Advanced and Expert. These levels gradually introduce sequencing, repeat/loop blocks and if-statements. The mazes are randomly generated, so users can keep practising without always getting the same maze.*
+
 
 **Link to the live thing (if any):**
 _Deployed URL, workflow export, video demo - whatever proves it works._
@@ -50,10 +50,10 @@ _Be honest about the split of work between you and your partner._
 _Every hackathon requires this. One honest paragraph beats three vague ones._
 
 ### Checklist
-- [*] Prototype code (or export / workflow file) is in `hackathon/`
-- [.] This week's slides are in `hackathon/`
-- [.] The prototype actually runs, and I wrote down how to run it
-- [.] Ethical reflection written above
+- [x] Prototype code (or export / workflow file) is in `hackathon/`
+- [x] This week's slides are in `hackathon/`
+- [x] The prototype actually runs, and I wrote down how to run it
+- [x] Ethical reflection written above
 
 ---
 
