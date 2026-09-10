@@ -50,7 +50,7 @@ _Be honest about the split of work between you and your partner._
 _Every hackathon requires this. One honest paragraph beats three vague ones._
 
 ### Checklist
-- [.] Prototype code (or export / workflow file) is in `hackathon/`
+- [*] Prototype code (or export / workflow file) is in `hackathon/`
 - [.] This week's slides are in `hackathon/`
 - [.] The prototype actually runs, and I wrote down how to run it
 - [.] Ethical reflection written above
