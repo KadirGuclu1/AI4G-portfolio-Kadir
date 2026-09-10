@@ -25,11 +25,11 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 
 **Project title:**
 
-**My pair partner:**
+**My pair partner:*Sam Kempers*
 
-**Tool we had to use:**
+**Tool we had to use:*https://bolt.new/*
 
-**SDG we had to address:**
+**SDG we had to address:*4*
 
 **What problem does it solve, and for whom?**
 _Name a real, specific user. "Everyone" is not a user._
@@ -50,10 +50,10 @@ _Be honest about the split of work between you and your partner._
 _Every hackathon requires this. One honest paragraph beats three vague ones._
 
 ### Checklist
-- [ ] Prototype code (or export / workflow file) is in `hackathon/`
-- [ ] This week's slides are in `hackathon/`
-- [ ] The prototype actually runs, and I wrote down how to run it
-- [ ] Ethical reflection written above
+- [.] Prototype code (or export / workflow file) is in `hackathon/`
+- [.] This week's slides are in `hackathon/`
+- [.] The prototype actually runs, and I wrote down how to run it
+- [.] Ethical reflection written above
 
 ---
 
