@@ -12,8 +12,8 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 **What did I find difficult, and how did I solve it?**
 
 ### Checklist
-- [ x ] My workshop / homework files are in `homework/`
-- [ x ] Everything runs without errors, or I explained what does not and why
+- [x] My workshop / homework files are in `homework/`
+- [x] Everything runs without errors, or I explained what does not and why
 
 ---
 
@@ -50,10 +50,10 @@ We built this together as a pair. Both of us worked jointly on the workflow desi
 This tool collects sensitive data about screen time, mood, stress, and sleep habits. A key risk is privacy: if this data is not stored securely or is kept longer than necessary, it could be misused or reveal unwanted insights into someone's well-being. Therefore, we only collect data that is directly needed for the evening routine, store it in a single Google Sheet without sharing it with third parties, and clearly communicate that this is not a medical tool; users can stop using it at any time and delete their data by removing rows in the sheet. Another risk is that the system could incorrectly label normal screen use as unhealthy, for example a student may spend many hours on a laptop for studying rather than recreational use, so the AI prompt is designed so that high screen time is not automatically judged as negative but interpreted in context: studying is fine, but the user still gets a feasible tip to wind down. AI bias could also lead to less accurate recommendations for some users depending on how they phrase their notes, which we mitigate by using supportive, non-judgmental language and avoiding hard labels like "bad" or "unhealthy." Finally, the tool could create a false sense of security if someone with serious mental-health difficulties relies on it instead of seeking professional help, which is why every output explicitly states that this is not a medical or diagnostic service and users with low mood or high stress are actively encouraged to contact a GP or other professional. We would not trust this tool for a genuine mental-health crisis, and that is exactly where automation should stop and a human professional should take over; the tool is intended as support for awareness and small habits, not as a replacement for care.
 
 ### Checklist
-- [ ] Prototype code (or export / workflow file) is in `hackathon/`
-- [ ] This week's slides are in `hackathon/`
-- [ ] The prototype actually runs, and I wrote down how to run it
-- [ ] Ethical reflection written above
+- [x] Prototype code (or export / workflow file) is in `hackathon/`
+- [x] This week's slides are in `hackathon/`
+- [x] The prototype actually runs, and I wrote down how to run it
+- [x] Ethical reflection written above
 
 ---
 
