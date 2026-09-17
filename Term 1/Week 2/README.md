@@ -12,8 +12,8 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 **What did I find difficult, and how did I solve it?**
 
 ### Checklist
-- [x] My workshop / homework files are in `homework/`
-- [x] Everything runs without errors, or I explained what does not and why
+- [ x ] My workshop / homework files are in `homework/`
+- [ x ] Everything runs without errors, or I explained what does not and why
 
 ---
 
@@ -44,7 +44,7 @@ Import the n8n workflow (JSON) into your n8n instance. Connect your Google Sheet
 
 The workflow itself has 8 nodes: a Schedule Trigger firing daily at 21:30; a Form Trigger where the user enters screen time, mood, stress, and an optional note; a Google Sheets node that appends the form answers; an AI node (LLM) that analyzes the answers and generates a wind-down routine; an If/Condition node checking whether well-being is okay (mood >= 3 and stress <= 3); a "Good tip" branch with a standard supportive routine; a "Supportive tip" branch with an extra supportive message for low mood or high stress; and a Gmail node that sends the routine and tip to the user by email.
 **Who did what?**
-_Be honest about the split of work between you and your partner._
+We built this together as a pair. Both of us worked jointly on the workflow design, the n8n nodes, the AI prompt, the Google Sheets and Gmail setup, testing, and the ethical reflection, without a strict split of tasks.
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
 This tool collects sensitive data about screen time, mood, stress, and sleep habits. A key risk is privacy: if this data is not stored securely or is kept longer than necessary, it could be misused or reveal unwanted insights into someone's well-being. Therefore, we only collect data that is directly needed for the evening routine, store it in a single Google Sheet without sharing it with third parties, and clearly communicate that this is not a medical tool; users can stop using it at any time and delete their data by removing rows in the sheet. Another risk is that the system could incorrectly label normal screen use as unhealthy, for example a student may spend many hours on a laptop for studying rather than recreational use, so the AI prompt is designed so that high screen time is not automatically judged as negative but interpreted in context: studying is fine, but the user still gets a feasible tip to wind down. AI bias could also lead to less accurate recommendations for some users depending on how they phrase their notes, which we mitigate by using supportive, non-judgmental language and avoiding hard labels like "bad" or "unhealthy." Finally, the tool could create a false sense of security if someone with serious mental-health difficulties relies on it instead of seeking professional help, which is why every output explicitly states that this is not a medical or diagnostic service and users with low mood or high stress are actively encouraged to contact a GP or other professional. We would not trust this tool for a genuine mental-health crisis, and that is exactly where automation should stop and a human professional should take over; the tool is intended as support for awareness and small habits, not as a replacement for care.
