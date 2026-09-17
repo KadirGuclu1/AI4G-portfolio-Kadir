@@ -1,0 +1,460 @@
+{
+  "name": "SleepWindDown - Evening Routine with Screen Reduction",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "30 21 * * *"
+            }
+          ]
+        }
+      },
+      "id": "73d75f31-92d7-46c5-bebe-2f097ab73c04",
+      "name": "Every evening 21:30",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "kadir202012@gmail.com",
+        "subject": "Time for your evening wind-down check-in.",
+        "emailType": "text",
+        "message": "=Hi,\n\nTake a moment for yourself. Fill in your short evening check-in about your screen time, mood, and stress:\n\n{{ $vars.formUrl || \"https://kadoguc.app.n8n.cloud/form-test/sleepwinddown-checkin\" }}\n\nThis is a voluntary, supportive check-in. It is not medical or diagnostic advice and not a substitute for professional help.\n\nSleep well,\nSleepWindDown",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "becb4fd5-1001-459a-88b9-6d37874a6122",
+      "name": "Send form invitation",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        0
+      ],
+      "webhookId": "b5157263-d165-4763-abdc-d3ef55b363a1",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "NybP3bdVP1tW8VNH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "SleepWindDown",
+        "formDescription": "Evening check-in A brief, voluntary check-in during your evening. This does not constitute medical or diagnostic advice and is not a substitute for professional help. We collect only what is necessary and do not share any information with third parties.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your email address (for your personal routine)",
+              "fieldType": "email",
+              "fieldName": "email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Screen time today (hours)",
+              "fieldType": "number",
+              "fieldName": "screen_time_vandaag",
+              "placeholder": "bijv. 6",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "How do you feel now? (1 = low, 5 = good)",
+              "fieldType": "number",
+              "fieldName": "mood",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "How much stress are you experiencing right now? (1 = low, 5 = high)",
+              "fieldType": "number",
+              "fieldName": "stress",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Is there anything else you'd like to share? (optional)",
+              "fieldType": "textarea",
+              "fieldName": "notitie"
+            }
+          ]
+        },
+        "options": {
+          "path": "sleepwinddown-checkin",
+          "respondWithOptions": {
+            "values": {
+              "formSubmittedText": "Thank you. Your personal wind-down routine will arrive by email shortly. Take good care of yourself."
+            }
+          }
+        }
+      },
+      "id": "98203c35-5d1d-480a-8cce-68983ebbed43",
+      "name": "Wind-down check-in",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        320
+      ],
+      "webhookId": "39300c99-1c20-4f81-af75-fdba72a33562"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LRhsZRoQkuPkzNzJym9MuddWbgkPc4NjO98IiXfEtgs",
+          "mode": "list",
+          "cachedResultName": "SleepWindDown_Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LRhsZRoQkuPkzNzJym9MuddWbgkPc4NjO98IiXfEtgs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Blad1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LRhsZRoQkuPkzNzJym9MuddWbgkPc4NjO98IiXfEtgs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toISO() }}",
+            "Email": "={{ $json.email }}",
+            "screen_time_vandaag": "={{ $json.screen_time_vandaag }}",
+            "mood": "={{ $json.mood }}",
+            "stress": "={{ $json.stress }}",
+            "notitie": "={{ $json.notitie }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "screen_time_vandaag",
+              "displayName": "screen_time_vandaag",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mood",
+              "displayName": "mood",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "stress",
+              "displayName": "stress",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notitie",
+              "displayName": "notitie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "5e85b56f-d0fb-4258-a34c-004cc7323f9a",
+      "name": "Log to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        224
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tsuHlIVcE8pNgTAN",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gpt-4o-mini"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=You are a friendly, supportive evening coach for students (ages 16-30). You help them relax and wind down toward the night.\n\nSTRICT ETHICAL RULES:\n- NEVER give medical, psychological, or diagnostic advice. Never make a diagnosis.\n- ALWAYS close by stating that this is not a substitute for professional help.\n- Use supportive, non-judgmental language. NEVER use words like \"bad,\" \"unhealthy,\" \"wrong,\" or \"too much.\"\n- Do NOT automatically label high screen time as negative; studying or social contact counts differently than aimless scrolling. Ask about it or frame it neutrally.\n- Be brief and concrete: give 3 to 5 achievable wind-down steps.\n- Write warmly and calmly."
+            },
+            {
+              "content": "=Check-in data:\n- Screen time today: {{ $json.screen_time_vandaag }} hours\n- Mood (1-5): {{ $json.mood }}\n- Stress (1-5): {{ $json.stress }}\n- Note: {{ $json.notitie || \"none\" }}\n\nWrite a short, personal wind-down routine (3-5 steps) that fits this data. Stay supportive and non-judgmental."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "maxTokens": 600,
+          "temperature": 0.7
+        }
+      },
+      "id": "8be59b46-61e1-4135-b9fa-badd4d54e70b",
+      "name": "Generate wind-down routine",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        416
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "Gateway credits",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "mood",
+              "leftValue": "={{ $('Wind-down check-in').item.json.mood }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "stress",
+              "leftValue": "={{ $('Wind-down check-in').item.json.stress }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "5964c85e-a973-481f-9cd3-ade92e329573",
+      "name": "Mood ok & stress low?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        416
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "email_body",
+              "name": "email_body",
+              "type": "string",
+              "value": "={{ \"Hi,\\n\\nThanks for completing your check-in. Here is your personal wind-down routine for tonight:\\n\\n\" + $json.output[0].content[0].text + \"\\n\\nExtra tip: in the last half hour before sleep, try to make your screen calmer (dim it or set it aside), in whatever way feels good to you.\\n\\nThis message is meant to be supportive and is not medical or diagnostic advice. If you notice you haven't felt well for a longer time, feel free to talk about it with your GP or another professional.\\n\\nSleep well,\\nSleepWindDown\" }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "662df72a-b8ee-41c1-8b15-6569184853f7",
+      "name": "Good tip (standard)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        672,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Wind-down check-in').item.json.email }}",
+        "subject": "={{ \"Your personal wind-down routine\" }}",
+        "emailType": "text",
+        "message": "={{ $json.email_body }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "0d12799d-b818-4a91-9d58-e6a7ef198eba",
+      "name": "Send result to user",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        896,
+        416
+      ],
+      "webhookId": "e8ce4463-88d8-42f2-80bb-168c59a2487f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "NybP3bdVP1tW8VNH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "email_body",
+              "name": "email_body",
+              "type": "string",
+              "value": "={{ \"Hi,\\n\\nThank you for taking a moment to reflect on how you're doing. Here is a calm wind-down routine for tonight:\\n\\n\" + $json.output[0].content[0].text + \"\\n\\nIt sounds like today feels a bit heavier, and that's completely okay. Be gentle with yourself.\\n\\nIf you notice your mood stays low or the stress lingers, know that you're not alone. It can help to talk about it with someone you trust, or to contact your GP or a professional. If you are in the Netherlands you can also reach 113 Suicide Prevention (call 113 or 0800-0113, 24/7, free). If you are elsewhere, please reach out to a local helpline or emergency services.\\n\\nThis message is meant to be supportive and is explicitly not medical or diagnostic advice and not a substitute for professional help.\\n\\nTake care and sleep well,\\nSleepWindDown\" }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8edcccf6-684b-4e15-bca3-55889621bf48",
+      "name": "Supportive tip (extra)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        672,
+        512
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every evening 21:30": {
+      "main": [
+        [
+          {
+            "node": "Send form invitation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wind-down check-in": {
+      "main": [
+        [
+          {
+            "node": "Log to Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate wind-down routine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate wind-down routine": {
+      "main": [
+        [
+          {
+            "node": "Mood ok & stress low?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mood ok & stress low?": {
+      "main": [
+        [
+          {
+            "node": "Good tip (standard)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supportive tip (extra)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Good tip (standard)": {
+      "main": [
+        [
+          {
+            "node": "Send result to user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supportive tip (extra)": {
+      "main": [
+        [
+          {
+            "node": "Send result to user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "4c45db3a-9a22-4e4f-b697-9b8bab7cb39b",
+  "meta": {
+    "instanceId": "b13c77d571779c9d68de73c0ea621bc8a34d40ae00fe650b3e38069e62dcf2c8"
+  },
+  "nodeGroups": [],
+  "id": "ECZqG1QKrS3QBx8J",
+  "tags": []
+}
