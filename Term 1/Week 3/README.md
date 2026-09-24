@@ -24,30 +24,58 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Write them down here once you know them.
 
 **Project title:**
-
+Anonymous CV Screening
 **My pair partner:**
-
+Ahmet Ünlü (24125822)
 **Tool we had to use:**
-
+LLM API (via Python)
 **SDG we had to address:**
-
+SDG10 (reduced inequalities)
 **What problem does it solve, and for whom?**
-_Name a real, specific user. "Everyone" is not a user._
+This tool is for a recruiters or hiring team member who screens incoming CVs, whether manually or with the help of an AI tool. It addresses the risk that a candidate's name and the assumptions people or AI models make based on it unconsciously influences how a CV is judged. By automatically removing the candidate's name and other identifying details before any evaluation happens, the tool ensures that the first-stage judgment (by a human or an AI) is based only on skills, education, and experience.
 
 **What did you build?**
-_Two or three sentences. What can a user actually do with it?_
+1.	Provide a CV - paste it as text, or upload a .pdf, .docx, or .txt file.
+2.	Anonymize - the tool detects the candidate's name using the Gemini API and replaces it with "[CANDIDATE]". Email addresses, phone numbers, and postal codes are removed locally using pattern matching, before anything is sent to the AI.
+3.	Review - the anonymized CV is shown so the user can verify it before proceeding.
+4.	Evaluate - the anonymized CV and a job vacancy are sent to the Gemini API, which returns a score (1–10) and a short motivation based only on qualifications, skills, and experience.
 
 **Link to the live thing (if any):**
-_Deployed URL, workflow export, video demo - whatever proves it works._
+https://github.com/Hubertsauce/Hackathon-week3.git
+https://hackathon-week3-p4l2oy8awybyod7mhfmcyr.streamlit.app/
 
 **How do I run it?**
-_Short instructions so someone else can start it._
+1.	Provide a CV
+Choose one of two options:
+Paste text — copy and paste the full CV text into the text box.
+Upload document upload a .pdf, .docx, or .txt file. The tool automatically extracts the text and shows it in an editable box so you can check it looks correct.
+2.	Provide the job vacancy
+Paste the vacancy text into the second text box.
+3.	Click "Anonymize and evaluate CV"
+The app will:
+Detect and remove the candidate's name (shown as [CANDIDATE]), along with email, phone number, and postal code.
+Show you the anonymized CV so you can review it before evaluation.
+Send only the anonymized CV and the vacancy to the AI for evaluation.
+Display a score (1–10) and a short motivation based only on qualifications.
+4.	Review the result
+Always read the anonymized CV and the AI's motivation before making any hiring decision. The tool is meant to support human judgment, not replace it, if the name wasn't detected correctly, or the evaluation seems off, double-check manually.
+
 
 **Who did what?**
-_Be honest about the split of work between you and your partner._
+Ahmet made:
+1.	demo project(it wasn't realy fitting the SDG)
+2.	Readme
+3.	main product: the API integration code and tasks code
+Kadir made:
+4.	Research
+5.	powerpoint
+6.	connection with streamlit and frontend development
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
-_Every hackathon requires this. One honest paragraph beats three vague ones._
+The AI may occasionally fail to detect or fully remove identifying information (e.g. a name embedded in an unusual format, or indirect identity signals such as a specific university, hobby, or writing style that the anonymization step does not remove).
+The scoring itself is still performed by an AI model, which can be inconsistent between runs or make evaluation errors unrelated to bias.
+This tool assists human decision-making; it does not replace human review of hiring decisions.
+it could harm applicants with a good CV or the judgement of the recruiter.
 
 ### Checklist
 - [ ] Prototype code (or export / workflow file) is in `hackathon/`
