@@ -28,8 +28,10 @@ Plastic vs. Planet
 
 **My pair partner:**
 Milou van Leuven
+
 **Tool we had to use:**
 ComfyUI
+
 **SDG we had to address:**
 SDG 13 — Climate Action
 
