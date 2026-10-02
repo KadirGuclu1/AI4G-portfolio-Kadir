@@ -45,7 +45,7 @@ We created a 30-second AI-generated short film that compares plastic packaging w
 
 The film follows both materials through different stages: production, products in a supermarket, disposal after use, and their final impact on nature. Plastic can end up in the ocean and harm animals, while banana leaves can biodegrade naturally.
 **Link to the live thing (if any):**
-_Deployed URL, workflow export, video demo - whatever proves it works._
+https://youtu.be/Y_W9cMousSE?is=wEJwg0T4H8UXx_pR
 
 **How do I run it?**
 Open the ComfyUI workflow included in the hackathon/ folder. Make sure the required models are installed and load the workflow into ComfyUI. The shot list contains the prompts and order of the scenes needed to recreate the film.
