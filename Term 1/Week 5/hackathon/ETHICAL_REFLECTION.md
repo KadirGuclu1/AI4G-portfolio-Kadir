@@ -49,13 +49,9 @@ A prediction should never be treated as proof that someone is dishonest. Before 
 The results show that a model can achieve strong overall performance while still treating groups unequally.
 
 | Model | Test precision | Overall recall | Female recall | Male recall | Observation |
-
 |---|---:|---:|---:|---:|---|
-
 | Random Forest | 0.906 | 0.287 | 0.063 | 0.331 | Very large sex-based recall gap |
-
 | Logistic Regression | — | — | 0.198 | 0.545 | Substantial sex-based recall gap |
-
 | KNN | — | Best overall recall and F1 | 0.475 | 0.653 | Smallest tested sex-based gap, but still unequal |
 
 KNN is the least problematic of the three tested models, but that does **not** mean it is fair. Female recall remains substantially below male recall.
