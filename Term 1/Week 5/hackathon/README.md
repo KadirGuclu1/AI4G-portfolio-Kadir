@@ -46,5 +46,5 @@ For any realistic follow-up:
 
 
 
-See `ETHICAL_REFLECTION.md` for the full discussion.
+See [ETHICAL_REFLECTION](Term 1/Week 5/hackathon/ETHICAL_REFLECTION.md) for the full discussion.
 
