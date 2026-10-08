@@ -21,7 +21,7 @@ The subgroup analysis also showed that KNN had the smallest difference in recall
 
 ## Recommendation
 
-KNN is recommended \*\*for this classroom experiment only\*\* because it gave the best overall results:
+KNN is recommended **for this classroom experiment only** because it gave the best overall results:
 
 - Test precision: 0.728
 - Test recall: 0.624
