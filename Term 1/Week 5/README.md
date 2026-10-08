@@ -42,25 +42,15 @@ There is no live deployment. The working Jupyter Notebook, model comparison tabl
 
 **How do I run it?**
 
-1. Install Python 3.10 or newer.
-2. Open a terminal in the project folder.
-3. Install the required packages:
+1. Go to [Google Colab](https://colab.research.google.com/).
+2. Sign in with a Google account.
+3. Click **File → Upload notebook**.
+4. Upload `Notebook-modellen.ipynb` from the `hackathon/` folder.
+5. Click **Runtime → Run all**.
+6. If Google Colab asks for permission to continue, click **Run anyway**.
+7. Wait until all cells have finished running.
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Start Jupyter:
-
-   ```bash
-   jupyter lab
-   ```
-
-5. Open `Notebook-modellen.ipynb`.
-6. Select **Restart Kernel and Run All Cells**.
-7. The notebook downloads the UCI Adult dataset automatically when the data files are not already available.
-
-An internet connection is required during the first run.
+The notebook automatically installs or imports the required Python libraries and downloads the UCI Adult dataset. An internet connection is required
 
 **Who did what?**  
 Amien el Azzouzi and I worked together on the project. We jointly selected the use case, prepared the dataset, developed and tested the machine-learning pipeline, compared the models, discussed the ethical risks and prepared the presentation. We reviewed each other's work and made the final model recommendation together.
