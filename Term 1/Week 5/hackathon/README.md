@@ -46,5 +46,5 @@ For any realistic follow-up:
 
 
 
-See [ETHICAL_REFLECTION](Term 1/Week 5/hackathon/ETHICAL_REFLECTION.md) for the full discussion.
+See [ETHICAL_REFLECTION]([Term 1/Week 5/hackathon/ETHICAL_REFLECTION.md](https://github.com/KadirGuclu1/AI4G-portfolio-Kadir/blob/main/Term%201/Week%205/hackathon/ETHICAL_REFLECTION.md)) for the full discussion.
 
