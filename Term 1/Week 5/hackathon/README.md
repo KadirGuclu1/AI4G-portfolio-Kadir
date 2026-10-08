@@ -1,13 +1,13 @@
 ## Research question
 
-Which of KNN, Logistic Regression, and Random Forest performs best when identifying people with an income above $50,000 while also considering fairness?\*\*
+Which of KNN, Logistic Regression, and Random Forest performs best when identifying people with an income above $50,000 while also considering fairness?
 
 ## Method
 
 1. Combine the original UCI train and test files, normalise the labels, and remove 52 exact duplicate rows.
-2. Drop `fnlwgt` because it is a census sampling weight. `education` is also dropped because `education\_num` contains the same information.
-3. Combine `native\_country` into `United-States` and `Other` because some of the original categories have very few records.
-4. Use a stratified 80/20 train-test split with `random\_state=42`.
+2. Drop `fnlwgt` because it is a census sampling weight. `education` is also dropped because `education_num` contains the same information.
+3. Combine `native_country` into `United-States` and `Other` because some of the original categories have very few records.
+4. Use a stratified 80/20 train-test split with `random_state=42`.
 5. Build a preprocessing pipeline that imputes numeric values with the median, labels missing categorical values as `Missing`, standardises numeric features, and one-hot encodes categories.
 6. Tune the models using five-fold stratified cross-validation, with precision for the positive class as the main metric.
 7. Test each tuned model on the test set that was kept separate during training.
@@ -46,5 +46,5 @@ For any realistic follow-up:
 
 
 
-See `ETHICAL\_REFLECTION.md` for the full discussion.
+See `ETHICAL_REFLECTION.md` for the full discussion.
 
