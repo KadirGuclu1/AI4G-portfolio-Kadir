@@ -16,15 +16,10 @@ Therefore, this project demonstrates a possible machine-learning workflow. It do
 
 The goal is to identify applicants whose predicted income profile suggests they may earn more than USD 50,000
 
-
 | Outcome | Intended action |
-
 |---|---|
-
 | Flagged by the model | Manual verification of income documents |
-
 | Not flagged | Normal application process |
-
 
 A false positive is treated as the most important individual harm because an eligible applicant could face unnecessary checks, delays, stress, or loss of support.
 
