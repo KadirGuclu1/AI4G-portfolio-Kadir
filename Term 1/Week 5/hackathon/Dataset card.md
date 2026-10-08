@@ -1,4 +1,4 @@
-** Dataset card
+## Dataset card
 
 * Name: Adult / Census Income Data Set
 * Source: US Census Bureau, 1994 Current Population Survey database
