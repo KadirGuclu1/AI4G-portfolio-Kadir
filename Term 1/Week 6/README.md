@@ -20,40 +20,41 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 
 ## 2. Hackathon prototype -> [`hackathon/`](hackathon/)
 
-> Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
-> Write them down here once you know them.
+**Project title:** Technology & Infrastructure Live Pulse (SDG 9)
 
-**Project title:**
+**My pair partner:** Joe Navarro Munté
 
-**My pair partner:**
+**Tool we had to use:** Python, Streamlit, Hugging Face Transformers (`ProsusAI/finbert`), SQLite, Google News RSS
 
-**Tool we had to use:**
-
-**SDG we had to address:**
+**SDG we had to address:** SDG 9: Industry, Innovation and Infrastructure
 
 **What problem does it solve, and for whom?**
-_Name a real, specific user. "Everyone" is not a user._
+It helps a Digital Infrastructure Policy Officer at a local municipality monitor continuous media signals and public attention around data centers, power grids, cloud outages and telecom networks. Instead of reading hundreds of articles manually, the officer gets a real-time overview of infrastructure news trends.
 
 **What did you build?**
-_Two or three sentences. What can a user actually do with it?_
+We built an automated data stream that fetches live infrastructure news every 10 minutes via RSS, filters them with technical keywords, and scores headline sentiment using FinBERT. We built an interactive dark-themed Streamlit dashboard with time-series charts, metric cards, and a searchable table where the policy officer can click directly to the original news articles.
 
 **Link to the live thing (if any):**
-_Deployed URL, workflow export, video demo - whatever proves it works._
+Local live demo running via Streamlit (`http://localhost:8501`), with source code and evaluation files in our GitHub repository.
 
 **How do I run it?**
-_Short instructions so someone else can start it._
+1. Install requirements: `pip install -r requirements.txt`
+2. Start the continuous collector in Terminal 1: `python -m src.run_pipeline`
+3. Launch the dashboard in Terminal 2: `python -m streamlit run dashboard/app.py`
+4. Run the accuracy benchmark: `python tests/calculate_accuracy.py`
 
 **Who did what?**
-_Be honest about the split of work between you and your partner._
+* **Partner:** Built the RSS feed collector (`fetch_stream.py`), SQLite database storage (`store_results.py`), and the continuous background loop.
+* **Me:** Implemented the FinBERT sentiment analysis pipeline (`analyze_sentiment.py`), designed the Streamlit dashboard with custom CSS (`app.py`), and conducted the 50-item manual evaluation benchmark (`tests/calculate_accuracy.py` and `tests/model_comparison.md`).
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
-_Every hackathon requires this. One honest paragraph beats three vague ones._
+Our RSS stream mostly captures journalists and corporate press releases, not ordinary citizens. In our honest benchmark of 50 headlines, FinBERT showed a neutrality bias: it scored 96% on neutral factual news, but missed 63% of negative headlines concerning household electricity bills because it was trained on corporate financial news. If a policy officer relies only on the sentiment graph, they could miss rising citizen frustration about energy costs. That is why our dashboard includes an alert banner and forces the user to verify original articles in the interactive table before making policy decisions.
 
 ### Checklist
-- [ ] Prototype code (or export / workflow file) is in `hackathon/`
-- [ ] This week's slides are in `hackathon/`
-- [ ] The prototype actually runs, and I wrote down how to run it
-- [ ] Ethical reflection written above
+- [x] Prototype code (or export / workflow file) is in `hackathon/`
+- [x] This week's slides are in `hackathon/`
+- [x] The prototype actually runs, and I wrote down how to run it
+- [x] Ethical reflection written above
 
 ---
 
