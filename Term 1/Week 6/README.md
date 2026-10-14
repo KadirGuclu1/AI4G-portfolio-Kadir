@@ -43,6 +43,8 @@ Local live demo running via Streamlit (`http://localhost:8501`), with source cod
 3. Launch the dashboard in Terminal 2: `python -m streamlit run dashboard/app.py`
 4. Run the accuracy benchmark: `python tests/calculate_accuracy.py`
 
+see also teacher_guide.md
+
 **Who did what?**
 * **Partner:** Built the RSS feed collector (`fetch_stream.py`), SQLite database storage (`store_results.py`), and the continuous background loop.
 * **Me:** Implemented the FinBERT sentiment analysis pipeline (`analyze_sentiment.py`), designed the Streamlit dashboard with custom CSS (`app.py`), and conducted the 50-item manual evaluation benchmark (`tests/calculate_accuracy.py` and `tests/model_comparison.md`).
