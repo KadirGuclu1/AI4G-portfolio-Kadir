@@ -39,7 +39,6 @@ st.markdown(
         letter-spacing: -0.5px;
     }
     
-    /* Alle widget labels helder wit maken */
     label[data-testid="stWidgetLabel"] p,
     div[data-testid="stWidgetLabel"] label,
     div[data-testid="stWidgetLabel"] p {
@@ -123,7 +122,7 @@ st.markdown(
         font-weight: 600 !important;
     }
 
-    /* 7. ZOEKBALK (st.text_input) VOLLEDIG DONKER */
+    /* 7. Input velden & Multiselect */
     div[data-testid="stTextInput"] > div > div {
         background-color: #1e293b !important;
         border: 1px solid #334155 !important;
@@ -143,7 +142,6 @@ st.markdown(
         box-shadow: 0 0 0 1px #00D2FF !important;
     }
 
-    /* 8. MULTISELECT FILTER (st.multiselect) VOLLEDIG DONKER */
     div[data-testid="stMultiSelect"] > div > div {
         background-color: #1e293b !important;
         border: 1px solid #334155 !important;
@@ -160,7 +158,6 @@ st.markdown(
         font-weight: 500 !important;
     }
 
-    /* 9. RADIO BUTTONS */
     div[data-testid="stRadio"] label p {
         color: #e5e7eb !important;
         font-weight: 600 !important;
@@ -175,6 +172,77 @@ st.caption(
     "Headline sentiment monitoring for SDG 9 policy officers. "
     "Collection runs periodically. Use Refresh data to load the latest saved results."
 )
+
+
+def explain_sentiment(title: str, label: str) -> str:
+    """Generates an automated explanation for why FinBERT classified the headline."""
+    title_lower = title.lower()
+
+    if label == "positive":
+        if any(
+            w in title_lower
+            for w in [
+                "invest",
+                "billion",
+                "growth",
+                "save",
+                "protect",
+                "fastest",
+                "innovat",
+                "advance",
+            ]
+        ):
+            return "Contains growth or capital signals (investments, savings, expansion)."
+        return "Classified as positive based on technological progress or positive industrial milestones."
+
+    elif label == "negative":
+        if any(
+            w in title_lower
+            for w in [
+                "outage",
+                "failure",
+                "threat",
+                "crisis",
+                "bottleneck",
+                "pause",
+                "ban",
+                "strain",
+                "devour",
+            ]
+        ):
+            return "Contains critical risk terms (outages, bottlenecks, capacity moratoriums, or threats)."
+        elif any(
+            w in title_lower
+            for w in ["cost", "bill", "price", "ratepayer", "increase"]
+        ):
+            return "Highlights consumer cost burden or infrastructure price increases."
+        return (
+            "Identified as operational disruption, failure, or grid"
+            " vulnerability."
+        )
+
+    elif label == "neutral":
+        if any(
+            w in title_lower for w in ["bill", "cost", "price", "ratepayer"]
+        ):
+            return "Factual discussion of rates or prices (Warning: check for household cost strain)."
+        elif any(
+            w in title_lower
+            for w in [
+                "order",
+                "sign",
+                "bill",
+                "law",
+                "govern",
+                "require",
+                "forum",
+                "push",
+            ]
+        ):
+            return "Descriptive reporting on policy, government legislation, or regulatory forums."
+        return "Factual and descriptive infrastructure reporting without strong emotional markers."
+
+    return "Standard model classification."
 
 
 @st.cache_data(ttl=60)
@@ -224,6 +292,13 @@ def load_data():
         "negative": "🔴 Negative",
         "unknown": "Unknown",
     })
+
+    # Voeg AI verklaring toe per artikel
+    dataframe["ai_reasoning"] = [
+        explain_sentiment(t, l)
+        for t, l in zip(dataframe["title"], dataframe["sentiment_label"])
+    ]
+
     return dataframe
 
 
@@ -234,8 +309,9 @@ try:
     data = load_data()
 except (sqlite3.Error, pd.errors.DatabaseError) as error:
     st.error(
-        "The database could not be read. Check data/pulse.db and run the collector "
-        "from the project root. Back up existing data before making changes."
+        "The database could not be read. Check data/pulse.db and run the"
+        " collector from the project root. Back up existing data before making"
+        " changes."
     )
     with st.expander("Technical details"):
         st.code(str(error), language="text")
@@ -243,29 +319,31 @@ except (sqlite3.Error, pd.errors.DatabaseError) as error:
 
 if data.empty:
     st.warning(
-        "No saved articles are available, or the database table is missing. "
-        "Run the collector from the project root: python -m src.run_pipeline"
+        "No saved articles are available, or the database table is missing."
+        " Run the collector from the project root: python -m src.run_pipeline"
     )
     st.info("After articles are saved, click Refresh data.")
     st.stop()
 
 st.caption(
-    "Charts show headline counts grouped by collection time in UTC, not publication "
-    "time or incident severity. Table filters do not change the cards or charts."
+    "Charts show headline counts grouped by collection time in UTC, not"
+    " publication time or incident severity. Table filters do not change the"
+    " cards or charts."
 )
 
 invalid_times = int(data["fetched_at"].isna().sum())
 if invalid_times:
     st.warning(
-        f"{invalid_times} article(s) have an invalid collection timestamp. "
-        "They remain in the table and total counts but are excluded from time charts."
+        f"{invalid_times} article(s) have an invalid collection timestamp. They"
+        " remain in the table and total counts but are excluded from time"
+        " charts."
     )
 
 unknown_labels = int(data["filter_label"].eq("unknown").sum())
 if unknown_labels:
     st.warning(
-        f"{unknown_labels} article(s) have an unknown sentiment label. "
-        "Use the unknown filter to inspect them."
+        f"{unknown_labels} article(s) have an unknown sentiment label. Use the"
+        " unknown filter to inspect them."
     )
 
 subsets = {
@@ -366,7 +444,19 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.divider()
-st.subheader("🔍 Inspect Items Behind the Signal")
+
+# --- FILTER & INTERACTIVE TABLE ---
+st.subheader("🔍 Inspect Items & AI Reasoning Behind the Signal")
+
+with st.expander(
+    "ℹ️ How does the AI (FinBERT) determine Positive, Neutral or Negative?"
+):
+    st.markdown("""
+    * **🟢 Positive:** Triggered by economic growth, investment milestones, infrastructure savings, and capacity expansion (e.g. *€13B investment*, *innovative power tech*).
+    * **⚪ Neutral:** Factual reporting on legislation, bills, executive orders, and analytical market overviews. *(Note: Analytical questions about electricity costs are often flagged as neutral by FinBERT).*
+    * **🔴 Negative:** Triggered by operational disruptions, cloud/power outages, regulatory moratoriums, or grid bottlenecks (e.g. *outage*, *devouring electric grid*, *pause construction*).
+    """)
+
 filter_col, search_col = st.columns([2, 2])
 with filter_col:
     filter_choice = st.multiselect(
@@ -391,16 +481,15 @@ if filtered_data.empty:
     st.info("No articles match the selected filters and search text.")
 
 st.dataframe(
-    filtered_data[
-        [
-            "fetched_at",
-            "badge_label",
-            "title",
-            "sentiment_score",
-            "source",
-            "url",
-        ]
-    ],
+    filtered_data[[
+        "fetched_at",
+        "badge_label",
+        "title",
+        "ai_reasoning",
+        "sentiment_score",
+        "source",
+        "url",
+    ]],
     column_config={
         "fetched_at": st.column_config.DatetimeColumn(
             "Collected at (UTC)", format="D MMM YYYY, HH:mm"
@@ -408,13 +497,19 @@ st.dataframe(
         "badge_label": st.column_config.TextColumn(
             "Sentiment Status", help="Classified by ProsusAI/finbert"
         ),
-        "title": st.column_config.TextColumn("News Headline", width="large"),
+        "title": st.column_config.TextColumn("News Headline", width="medium"),
+        "ai_reasoning": st.column_config.TextColumn(
+            "Why this label? (AI Reasoning)", width="large"
+        ),
         "sentiment_score": st.column_config.ProgressColumn(
             "Model Confidence",
             min_value=0.0,
             max_value=1.0,
             format="%.2f",
-            help="Model output score, not a guarantee that the prediction is correct.",
+            help=(
+                "Model output score, not a guarantee that the prediction is"
+                " correct."
+            ),
         ),
         "source": st.column_config.TextColumn("Source"),
         "url": st.column_config.LinkColumn(
