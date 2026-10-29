@@ -156,6 +156,10 @@ The goal is to help inspectors organise observations and decide which photograph
 *Important:* The application is a prototype. We have not yet demonstrated a measurable reduction in inspection time or maintenance costs.
 
 ### What did you build?
+<img width="301" height="220" alt="Schermafbeelding 2026-10-29 221914" src="https://github.com/user-attachments/assets/75a25d8e-ab40-4444-a021-6fc793bbd086" />
+<img width="194" height="73" alt="Schermafbeelding 2026-10-29 222031" src="https://github.com/user-attachments/assets/9bbbc364-68f8-48fb-8858-80edaceb27fb" />
+<img width="956" height="518" alt="Schermafbeelding 2026-10-29 224518" src="https://github.com/user-attachments/assets/503d3918-70ed-4c01-8aa9-bd33ddb5c98b" />
+<img width="929" height="499" alt="Schermafbeelding 2026-10-29 224530" src="https://github.com/user-attachments/assets/638aadde-5919-456e-9976-35ed04c42393" />
 
 We developed *SlootWacht*, an AI-powered object detection prototype designed to recognise three categories in photographs of waterways.
 
