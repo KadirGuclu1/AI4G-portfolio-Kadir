@@ -50,7 +50,7 @@ SlootWacht – AI-Powered Monitoring of Dutch Ditches
 
 *My pair partner:*
 
-Kadir Guclu  
+Milou van Leuven
 
 *Tool we had to use:*
 
@@ -421,42 +421,7 @@ Only fill this in for the week your group was selected to present. You need at l
 
 [Complete if selected to present.]
 
----
-
+-
 ## 4. Reflection
 
 *What is the most important thing I learned this week?*
-
-The most important thing I learned this week is that developing an AI model involves much more than training an algorithm.
-
-Before training could even begin, we had to collect hundreds of suitable images, organise the dataset, define clear detection classes and review the quality of the annotations.
-
-I discovered that collecting data is not simply about reaching a minimum number of images. The images must also be relevant, representative and correctly labelled.
-
-For example, an image of plastic waste on a street is not useful when the model is supposed to recognise floating litter in a ditch.
-
-I also learned how to use Python for automated image collection, how to handle API limitations and download errors, and how to prepare a dataset for object detection in Roboflow.
-
-Another important lesson was understanding the difference between training, validation and testing data.
-
-A model should not only recognise images it has already seen. It should also perform reliably on new photographs.
-
-Finally, I gained practical experience with Streamlit and learned how a trained AI model can be connected to an application that a non-technical user could operate.
-
-*Where does this connect to "AI for Good"?*
-
-SlootWacht connects to AI for Good because it explores how artificial intelligence can support environmental monitoring and biodiversity protection.
-
-The Netherlands has an extensive network of waterways, and monitoring these environments requires time and expertise.
-
-By automatically identifying floating litter, dense aquatic vegetation and drainage structures, SlootWacht could help inspectors organise visual observations and identify locations that deserve closer attention.
-
-However, the project also showed me that AI can unintentionally cause harm, even when its purpose is positive.
-
-For example, automatically identifying dense vegetation as a problem could encourage unnecessary removal of aquatic plants, potentially damaging the ecosystems the project is intended to protect.
-
-I learned that responsible AI requires more than high model accuracy. It also requires representative data, transparency, appropriate evaluation metrics and human oversight.
-
-The goal of SlootWacht is therefore not to automate environmental decisions, but to provide useful information that helps people make better-informed choices.
-
-For me, the most important connection to AI for Good is that *technology should support biodiversity and human expertise rather than replace careful ecological judgement*.
